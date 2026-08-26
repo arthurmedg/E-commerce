@@ -1,5 +1,6 @@
 package com.biolab.ecommerce.entities;
 
+import com.biolab.ecommerce.entities.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -11,12 +12,14 @@ import lombok.NoArgsConstructor;
 @Entity
 // substitui os getters e setters
 @Data
+// @Getter - cria apenas os getters
+// @Setter - cria apenas os setters
+
 // substitui o construtor com todos os argumentos
 @AllArgsConstructor
 // substitui o construtor vazio
 @NoArgsConstructor
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -25,11 +28,11 @@ public class Usuario {
     @NotBlank @Email
     @Column(length = 150)
     private String email;
+    @Column(length = 20)
     private String telefone;
     @NotBlank @Size(min = 6)
-    @Column(length = 150)
     private String senha;
-    private String[] roles;
-
+    @Enumerated(EnumType.STRING)
+    private Role roles;
 
 }
