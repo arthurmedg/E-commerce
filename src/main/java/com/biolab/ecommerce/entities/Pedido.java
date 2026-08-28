@@ -21,4 +21,6 @@ public class Pedido {
     private StatusPedido status;
     @ManyToOne
     private Usuario cliente;
+    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private Pagamento pagamento;
 }

@@ -3,10 +3,7 @@ package com.biolab.ecommerce.controllers;
 import com.biolab.ecommerce.DTOs.PedidoDTO;
 import com.biolab.ecommerce.services.PedidoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("pedido")
@@ -21,5 +18,11 @@ public class PedidoController {
     @PostMapping
     public ResponseEntity<?> saveOrder(@RequestBody PedidoDTO dto) {
         return ResponseEntity.ok(service.criarPedido(dto));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> delOrder(@PathVariable long id) {
+        service.deletarPedido(id);
+        return ResponseEntity.ok("Apagado com sucesso!");
     }
 }
