@@ -5,9 +5,10 @@ import com.biolab.ecommerce.entities.Pagamento;
 import com.biolab.ecommerce.entities.Pedido;
 import com.biolab.ecommerce.repositories.PagamentoRepository;
 import com.biolab.ecommerce.repositories.PedidoRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-
+@Service
 public class PagamentoService {
     private final PagamentoRepository pagamentoRepository;
     private final PedidoRepository pedidoRepository;
