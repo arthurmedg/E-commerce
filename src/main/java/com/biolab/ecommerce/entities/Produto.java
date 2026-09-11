@@ -25,8 +25,9 @@ public class Produto {
 //    fazendo tabela intermediaria
     @ManyToMany
     @JoinTable(name = "produto_categoria", // criação da tabela intermediaria juntando produto e categoria e atribuindo seu nome de produto_categoria
-    joinColumns = @JoinColumn(name="produto_id"), // primeira tabela
-    inverseJoinColumns = @JoinColumn(name = "categoria_id")) // segunda tabela - inverseJoinColumns utilizado por ser a segunda coluna
+        joinColumns = @JoinColumn(name = "produto_id"), // primeira tabela
+        inverseJoinColumns = @JoinColumn(name = "categoria_id")) // segunda tabela - inverseJoinColumns utilizado por ser a segunda coluna
+
     private Set<Categoria> categorias = new HashSet<>();
 
 
