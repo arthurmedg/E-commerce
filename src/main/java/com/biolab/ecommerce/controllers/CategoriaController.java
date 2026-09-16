@@ -2,6 +2,7 @@ package com.biolab.ecommerce.controllers;
 
 import com.biolab.ecommerce.DTOs.CategoriaDTO;
 import com.biolab.ecommerce.services.CategoriaService;
+import jakarta.validation.Valid;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> buscarCat() {
+    public ResponseEntity<?> buscarCat(@PathVariable long id) {
         return ResponseEntity.ok().body(service.buscarCatId(id));
     }
 
@@ -34,4 +35,10 @@ public class CategoriaController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> alterarCategoria(@Valid @PathVariable("id") long id, @RequestBody CategoriaDTO dto){
+        return ResponseEntity.ok(service.alterarCategoria(id, dto));
+    }
+
 }

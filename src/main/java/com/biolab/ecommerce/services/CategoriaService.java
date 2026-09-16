@@ -29,9 +29,18 @@ public class CategoriaService {
         return dto;
     }
 
-    public String deletar(long id) {
+    public String delete(long id) {
         Categoria categoria = categoriaRepository.findById(id).orElseThrow();
         categoriaRepository.deleteById(categoria.getId());
         return "Excluído com sucesso!";
+    }
+
+    public String alterarCategoria(long id, CategoriaDTO dto) {
+        Categoria categoria = categoriaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Erro: Categoria não foi encontrado no sistema!"));
+
+        categoria.setNome(dto.getNome());
+
+        categoriaRepository.save(categoria);
+        return "Categoria editada com sucesso!";
     }
 }
