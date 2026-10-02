@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,4 +32,10 @@ public class Produto {
     private Set<Categoria> categorias = new HashSet<>();
 
 
+    @OneToMany(mappedBy = "id.produto")
+    private Set<ItemDoPedido> items = new HashSet<>();
+
+    public List<Pedido> getPedido() {
+        return items.stream().map(x -> x.getPedido()).toList();
+    }
 }
