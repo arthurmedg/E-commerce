@@ -1,6 +1,5 @@
 package com.biolab.ecommerce.services;
 
-import com.biolab.ecommerce.DTOs.CategoriaDTO;
 import com.biolab.ecommerce.DTOs.ProdutoDTO;
 import com.biolab.ecommerce.entities.Categoria;
 import com.biolab.ecommerce.entities.Produto;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class ProdutoService {
